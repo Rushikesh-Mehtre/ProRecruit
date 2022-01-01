@@ -1,0 +1,87 @@
+.form {
+  border: 1px solid rgb(230, 221, 221);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 0 1rem;
+  width: 80%;
+  margin: auto;
+  padding: 2rem;
+  margin-top: 20px;
+}
+.form div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.form div:nth-last-child(1) {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 2rem;
+}
+.form input,
+.form select,
+.form button {
+  width: 100%;
+  height: 35px;
+  padding-left: 5px;
+  border-radius: 3px;
+  border: 1px solid rgb(209, 196, 196);
+  background-color: white;
+}
+.form input::-webkit-outer-spin-button,
+.form input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px white inset !important;
+}
+.form input:focus,
+.form select:focus {
+  outline: none;
+}
+.form button {
+  width: auto;
+  padding: 5px 15px;
+  height: 40px;
+}
+.form label {
+  margin-bottom: 5px;
+  float: left;
+  color: white;
+}
+.form input {
+  margin-bottom: 10px;
+}
+.form select {
+  margin-bottom: 10px;
+}
+.form button {
+  color: white;
+  font-weight: bold;
+  background: linear-gradient(
+    90deg,
+    rgba(8, 33, 50, 1) 0%,
+    rgba(53, 115, 171, 1) 73%
+  );
+  background-size: 200% 100%;
+  background-position: right bottom;
+  transition: all 0.5s ease-out;
+  border: none;
+}
+.form button:hover {
+  cursor: pointer;
+  background-position: left bottom;
+  color: white;
+}
+.icon {
+  font-size: 20px;
+  position: relative;
+  top: 3px;
+  margin-right: 5px;
+}

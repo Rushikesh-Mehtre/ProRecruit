@@ -1,0 +1,100 @@
+* {
+  box-sizing: border-box;
+}
+.about {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  gap: 20px;
+  color: white;
+}
+.left {
+  border: 1px solid rgb(224, 211, 211);
+  width: 40%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.left > div:nth-child(3) {
+  display: flex;
+  justify-content: flex-end;
+  gap: 20px;
+}
+.left a {
+  color: white;
+}
+.left a .icon {
+  font-size: 30px;
+}
+.left p,
+.left h1 {
+  text-align: start;
+}
+.left h1 {
+  margin-bottom: 20px;
+}
+.left p {
+  font-size: 18px;
+}
+.right {
+  border: 1px solid rgb(230, 221, 221);
+  width: 50%;
+  padding: 20px;
+}
+.right form {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+}
+.right form input,
+.right form textarea {
+  width: 100%;
+  padding-left: 10px;
+  border: 1px solid rgb(209, 196, 196);
+  border-radius: 3px;
+}
+.right form label {
+  margin-top: 10px;
+  margin-bottom: 3px;
+}
+.right form textarea {
+  padding-top: 10px;
+}
+.right form input {
+  height: 35px;
+}
+.right form button {
+  width: auto;
+  margin: auto;
+  padding: 5px 25px;
+  height: 35px;
+  font-size: 18px;
+  margin-top: 20px;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  color: white;
+  font-weight: bold;
+  background: linear-gradient(
+    90deg,
+    rgba(8, 33, 50, 1) 0%,
+    rgba(53, 115, 171, 1) 73%
+  );
+  background-size: 200% 100%;
+  background-position: right bottom;
+  transition: all 0.5s ease-out;
+  border: none;
+}
+.right form button:hover {
+  cursor: pointer;
+  background-position: left bottom;
+  color: white;
+}
+form input:focus,
+form select:focus,
+form textarea:focus {
+  outline: none;
+}
