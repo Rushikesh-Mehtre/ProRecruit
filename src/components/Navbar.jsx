@@ -1,16 +1,15 @@
 import React from "react";
 import styles from "./Navbar.module.css";
-import { Link } from "react-router-dom";
 import { RiFileUserFill } from "react-icons/ri";
 
 const Navbar = () => {
   return (
     <div className={styles.navbar}>
-      <Link to="/">
+      <p>
         {" "}
         <RiFileUserFill className={styles.icon} />
         ProRecruit
-      </Link>
+      </p>
       <div></div>
     </div>
   );

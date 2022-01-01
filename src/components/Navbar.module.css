@@ -24,3 +24,8 @@ a {
   top: 5px;
   margin-right: 10px;
 }
+.navbar p {
+  font-size: 30px;
+  color: white;
+  font-weight: bold;
+}
