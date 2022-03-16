@@ -1,82 +1,91 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import styles from "./About.module.css";
 import { useForm } from "@formspree/react";
-import SimpleSnackbar from "./SimpleSnackbar";
 import { BsLinkedin } from "react-icons/bs";
 import { FaInstagramSquare } from "react-icons/fa";
 import { FaGithubSquare } from "react-icons/fa";
+import { IoMdCall } from "react-icons/io";
+import { MdEmail } from "react-icons/md";
+
 const About = () => {
   const [state, handleSubmit] = useForm("xknkdjze");
-  const [formsubmitted, setFormSubmitted] = useState(false);
-  const [name, setname] = useState("");
-  const [mobile, setmobile] = useState("");
-  const [email, setemail] = useState("");
-  const [message, setmessage] = useState("");
-  const [fillalldetails, setfillalldetails] = useState(false);
-  useEffect(() => {
-    setTimeout(() => {
-      setFormSubmitted(false);
-      setfillalldetails(false);
-    }, 5000);
-  }, [formsubmitted, fillalldetails]);
+  console.log(state);
+  const [userData, setUserData] = useState({
+    name: "",
+    mobile: "",
+    email: "",
+    message: "",
+  });
+  console.log(userData);
   const buttonHandler = () => {
     if (
-      name.length == 0 ||
-      email.length == 0 ||
-      mobile.length == 0 ||
-      message.length == 0
+      !userData.name ||
+      !userData.email ||
+      !userData.mobile ||
+      !userData.message
     ) {
-      setfillalldetails(true);
+      alert("Please fill all the required fields.");
       return;
     }
-    if (state.succeeded) {
-      setFormSubmitted(true);
-      setname("");
-      setemail("");
-      setmobile("");
-      setmessage("");
-    }
+    console.log(userData);
+    setUserData({
+      name: "",
+      mobile: "",
+      email: "",
+      message: "",
+    });
+    alert("We received your message. Thank you !");
   };
   return (
     <div className={styles.about}>
-      {fillalldetails && (
-        <SimpleSnackbar message="Please fill all the details" />
-      )}{" "}
-      {formsubmitted && <SimpleSnackbar message="We received your message" />}{" "}
       <div className={styles.left}>
         <div>
-          <h1>About Me</h1>
+          <h2>About Me</h2>
           <p>
-            Hey there ! this is Rushikesh. I am frontend developer skilled with
+            Hey there ! This is Rushikesh. I am frontend developer skilled with
             HTML5, CSS3, JavaScript, Bootstrap and ReactJS. I have developed
             this project using ReactJS. You can connect with me by filling form
             besides for your suggestions and comments.
           </p>
         </div>
         <div>
-          <h1>Contact Me</h1>
-          <p>Phone - 7021476869 / 7303133973</p>
-          <p>Email ID - rsmrsm5952@gmail.com</p>
+          <h2>Contact Me</h2>
+          <p>
+            <IoMdCall className={styles.conatctIcon} /> 7021476869 / 7303133973
+          </p>
+          <p>
+            {" "}
+            <MdEmail className={styles.conatctIcon} /> rsmrsm5952@gmail.com
+          </p>
         </div>
         <div>
           <a
             href="https://www.linkedin.com/in/rushikesh-mehtre-122a81217/"
             target="_blank"
+            rel="noreferrer"
           >
             <BsLinkedin className={styles.icon} />{" "}
           </a>
-          <a href="https://github.com/Rushikesh-Mehtre/" target="_blank">
+          <a
+            href="https://github.com/Rushikesh-Mehtre/"
+            target="_blank"
+            rel="noreferrer"
+          >
             {" "}
             <FaGithubSquare className={styles.icon} />
           </a>
-          <a href="https://www.instagram.com/rs_mehtre/" target="_blank">
+          <a
+            href="https://www.instagram.com/rs_mehtre/"
+            target="_blank"
+            rel="noreferrer"
+          >
             {" "}
             <FaInstagramSquare className={styles.icon} />
           </a>
         </div>
       </div>
       <div className={styles.right}>
-        <h1>Send Your Message ! </h1>
+        <h2>Send Your Message ! </h2>
         <form onSubmit={handleSubmit}>
           <label htmlFor="">Name</label>
           <input
@@ -85,9 +94,9 @@ const About = () => {
             id=""
             placeholder="Name"
             onChange={(event) => {
-              setname(event.target.value);
+              setUserData({ ...userData, name: event.target.value });
             }}
-            value={name}
+            value={userData.name}
           />
           <label htmlFor="">Mobile Number</label>
           <input
@@ -95,9 +104,9 @@ const About = () => {
             type="text"
             maxLength="10"
             name="Mobile Number"
-            value={mobile}
+            value={userData.mobile}
             onChange={(event) => {
-              setmobile(event.target.value);
+              setUserData({ ...userData, mobile: event.target.value });
             }}
             onKeyPress={(event) => {
               if (!/[0-9]/.test(event.key)) {
@@ -110,9 +119,9 @@ const About = () => {
             type="email"
             placeholder="Email ID"
             name="Email ID"
-            value={email}
+            value={userData.email}
             onChange={(event) => {
-              setemail(event.target.value);
+              setUserData({ ...userData, email: event.target.value });
             }}
           />
           <label htmlFor="">Message</label>
@@ -121,9 +130,9 @@ const About = () => {
             id=""
             cols="30"
             rows="10"
-            value={message}
+            value={userData.message}
             onChange={(event) => {
-              setmessage(event.target.value);
+              setUserData({ ...userData, message: event.target.value });
             }}
             placeholder="Your Message"
           ></textarea>

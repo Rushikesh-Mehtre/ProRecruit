@@ -1,5 +1,5 @@
 .form {
-  border: 1px solid rgb(230, 221, 221);
+  /* border: 1px solid rgb(230, 221, 221); */
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 0 1rem;
@@ -84,4 +84,39 @@ input:-webkit-autofill:active {
   position: relative;
   top: 3px;
   margin-right: 5px;
+}
+@media screen and (max-width: 900px) {
+  .form {
+    width: 90%;
+  }
+}
+@media screen and (max-width: 780px) {
+  .form button {
+    width: auto;
+    padding: 5px 5px;
+    height: 45px;
+  }
+}
+@media screen and (max-width: 600px) {
+  .form {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 0 1rem;
+    width: 90%;
+    margin: auto;
+    padding: 0.5rem;
+    margin-top: 20px;
+  }
+  .form button {
+    width: auto;
+    padding: 5px 15px;
+    height: 40px;
+  }
+}
+@media screen and (max-width: 360px) {
+  .form button {
+    width: auto;
+    padding: 5px 5px;
+    height: 50px;
+  }
 }

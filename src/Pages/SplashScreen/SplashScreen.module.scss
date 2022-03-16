@@ -1,0 +1,59 @@
+.splashScreen {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  img {
+    // border: 1px solid black;
+    // width: 500px;
+    // height: 500px;
+    width: 70%;
+    height: 70%;
+    object-fit: contain;
+  }
+  .head {
+    // border: 1px solid black;
+    font-size: 25px;
+    font-weight: 500;
+  }
+  .subhead {
+    // border: 1px solid black;
+    font-size: 15px;
+  }
+  .progressBar {
+    margin-top: 10px;
+    // border: 1px solid black;
+    background-color: gray;
+    width: 50%;
+    height: 10px;
+    .bar {
+      height: 100%;
+
+      background: linear-gradient(
+        90deg,
+        rgba(121, 95, 9, 0.39289219105610995) 0%,
+        rgba(37, 124, 173, 0.8298669809720763) 0%,
+        rgba(20, 86, 145, 1) 0%,
+        rgba(2, 0, 36, 1) 50%
+      );
+    }
+  }
+}
+@media screen and (max-width: 600px) {
+  .splashScreen {
+    img {
+      width: 80%;
+      height: auto;
+      //   height: 80%;
+    }
+  }
+}
+@media screen and (max-width: 450px) {
+  .splashScreen {
+    img {
+      width: 90%;
+      //   height: 90%;
+    }
+  }
+}

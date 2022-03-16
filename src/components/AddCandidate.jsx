@@ -1,110 +1,89 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import styles from "./AddCandidate.module.css";
 import { FaUserPlus } from "react-icons/fa";
 import { BiReset } from "react-icons/bi";
-import SimpleSnackbar from "./SimpleSnackbar";
 
 const AddCandidate = (props) => {
-  const [name, setname] = useState("");
-  const [mobile, setmobile] = useState("");
-  const [email, setemail] = useState("");
-  const [jobtitle, setjobtitle] = useState("");
-  const [currentorg, setcurrentorg] = useState("");
-  const [currentsalary, setcurrentsalary] = useState("");
-  const [expectedsalary, setexpectedsalary] = useState("");
-  const [preferredlocation, setpreferredlocation] = useState("");
-  const [workex, setworkex] = useState("");
-  const [count, setcount] = useState(1);
-  const [noticeperiod, setnoticeperiod] = useState("");
-  const [useradded, setUseradded] = useState(false);
-  const [warningalert, setWarningAlert] = useState(false);
-  useEffect(() => {
-    setTimeout(() => {
-      setWarningAlert(false);
-      setUseradded(false);
-    }, 5000);
-  }, [warningalert, useradded]);
+  const [userData, setUserData] = useState({
+    name: "",
+    mobile: "",
+    email: "",
+    jobtitle: "",
+    currentorg: "",
+    currentsalary: "",
+    expectedsalary: "",
+    preferredlocation: "",
+    workex: "",
+    count: 1,
+    noticeperiod: "",
+  });
+
   const formSubmitHandler = (e) => {
     e.preventDefault();
-
     if (
-      !name ||
-      !email ||
-      !mobile ||
-      !jobtitle ||
-      !currentorg ||
-      !currentsalary ||
-      !noticeperiod ||
-      !workex ||
-      !preferredlocation ||
-      !expectedsalary
+      !userData.name ||
+      !userData.email ||
+      !userData.mobile ||
+      !userData.jobtitle ||
+      !userData.currentorg ||
+      !userData.currentsalary ||
+      !userData.noticeperiod ||
+      !userData.workex ||
+      !userData.preferredlocation ||
+      !userData.expectedsalary
     ) {
-      setWarningAlert(true);
+      alert("Please fill all mandatory fields");
       return;
     }
-
     const candidatedata = {
-      name: name,
-      mobile: mobile,
-      email: email,
-      jobtitle: jobtitle,
-      serialno: count,
-      currentorg: currentorg,
-      currentsalary: currentsalary,
-      expectedsalary: expectedsalary,
-      preferredlocation: preferredlocation,
-      workex: workex,
-      noticeperiod: noticeperiod,
+      ...userData,
       id: Math.random().toString(),
     };
+    setUserData({ ...userData, count: userData.count + 1 });
+    alert("Candidate information added successfully ! ");
 
+    setUserData({
+      ...userData,
+      name: "",
+      mobile: "",
+      email: "",
+      jobtitle: "",
+      currentorg: "",
+      currentsalary: "",
+      expectedsalary: "",
+      preferredlocation: "",
+      workex: "",
+      noticeperiod: "",
+    });
     props.onClick(candidatedata);
-    setcount(count + 1);
-    setUseradded(true);
-    setname("");
-    setemail("");
-    setmobile("");
-    setjobtitle("");
-    setexpectedsalary("");
-    setcurrentorg("");
-    setworkex("");
-    setexpectedsalary("");
-    setpreferredlocation("");
-    setnoticeperiod("");
-    setcurrentsalary("");
   };
 
   const restButtonHandler = () => {
-    setname("");
-    setemail("");
-    setmobile("");
-    setjobtitle("");
-    setexpectedsalary("");
-    setcurrentorg("");
-    setworkex("");
-    setexpectedsalary("");
-    setpreferredlocation("");
-    setnoticeperiod("");
-    setcurrentsalary("");
+    setUserData({
+      name: "",
+      mobile: "",
+      email: "",
+      jobtitle: "",
+      currentorg: "",
+      currentsalary: "",
+      expectedsalary: "",
+      preferredlocation: "",
+      workex: "",
+      noticeperiod: "",
+    });
   };
 
   return (
     <div>
-      {useradded && (
-        <SimpleSnackbar message="New candidate information added" />
-      )}{" "}
-      {warningalert && (
-        <SimpleSnackbar message="Please fill all the input details" />
-      )}{" "}
       <form action="" className={styles.form} onSubmit={formSubmitHandler}>
         <div>
           <label htmlFor="">Candiate Name</label>
           <input
             type="text"
             placeholder="Candidate Name"
-            value={name}
+            value={userData.name}
             onChange={(e) => {
-              setname(e.target.value);
+              setUserData({ ...userData, name: e.target.value });
             }}
             name="Candidate Name"
           />
@@ -112,10 +91,9 @@ const AddCandidate = (props) => {
         <div>
           <label htmlFor="">Mobile Number</label>
           <input
-            name=""
             id=""
             placeholder="Mobile Number"
-            value={mobile}
+            value={userData.mobile}
             type="text"
             maxLength="10"
             onKeyPress={(event) => {
@@ -124,7 +102,7 @@ const AddCandidate = (props) => {
               }
             }}
             onChange={(e) => {
-              setmobile(e.target.value);
+              setUserData({ ...userData, mobile: e.target.value });
             }}
             name="Mobile Number"
           />
@@ -135,9 +113,9 @@ const AddCandidate = (props) => {
           <input
             type="email"
             placeholder="Email Id"
-            value={email}
+            value={userData.email}
             onChange={(e) => {
-              setemail(e.target.value);
+              setUserData({ ...userData, email: e.target.value });
             }}
             name="Email Id"
           />
@@ -147,9 +125,9 @@ const AddCandidate = (props) => {
           <input
             type="text"
             placeholder="Job Title"
-            value={jobtitle}
+            value={userData.jobtitle}
             onChange={(e) => {
-              setjobtitle(e.target.value);
+              setUserData({ ...userData, jobtitle: e.target.value });
             }}
             name="Job Title"
           />
@@ -162,9 +140,9 @@ const AddCandidate = (props) => {
             name=""
             id=""
             placeholder="Current Organization"
-            value={currentorg}
+            value={userData.currentorg}
             onChange={(e) => {
-              setcurrentorg(e.target.value);
+              setUserData({ ...userData, currentorg: e.target.value });
             }}
           />
         </div>
@@ -174,9 +152,9 @@ const AddCandidate = (props) => {
           <select
             name="Work Experience"
             id=""
-            value={workex}
+            value={userData.workex}
             onChange={(e) => {
-              setworkex(e.target.value);
+              setUserData({ ...userData, workex: e.target.value });
             }}
           >
             <option value="Work Experience">Work Experience</option>
@@ -197,9 +175,9 @@ const AddCandidate = (props) => {
             name=""
             id=""
             placeholder="Current CTC"
-            value={currentsalary}
+            value={userData.currentsalary}
             onChange={(e) => {
-              setcurrentsalary(e.target.value);
+              setUserData({ ...userData, currentsalary: e.target.value });
             }}
             type="number"
             onKeyPress={(event) => {
@@ -216,9 +194,9 @@ const AddCandidate = (props) => {
             name=""
             id=""
             placeholder="Expected CTC"
-            value={expectedsalary}
+            value={userData.expectedsalary}
             onChange={(e) => {
-              setexpectedsalary(e.target.value);
+              setUserData({ ...userData, expectedsalary: e.target.value });
             }}
             type="number"
             onKeyPress={(event) => {
@@ -236,9 +214,9 @@ const AddCandidate = (props) => {
             placeholder="Preferred Location"
             type="text"
             id=""
-            value={preferredlocation}
+            value={userData.preferredlocation}
             onChange={(e) => {
-              setpreferredlocation(e.target.value);
+              setUserData({ ...userData, preferredlocation: e.target.value });
             }}
           ></input>
         </div>
@@ -248,9 +226,9 @@ const AddCandidate = (props) => {
           <select
             name="Notice Period"
             id=""
-            value={noticeperiod}
+            value={userData.noticeperiod}
             onChange={(e) => {
-              setnoticeperiod(e.target.value);
+              setUserData({ ...userData, noticeperiod: e.target.value });
             }}
           >
             <option value="notice period">Notice Period</option>

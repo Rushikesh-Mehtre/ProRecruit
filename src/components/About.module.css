@@ -6,7 +6,6 @@
   justify-content: space-between;
   padding: 20px;
   gap: 20px;
-  color: white;
 }
 .left {
   border: 1px solid rgb(224, 211, 211);
@@ -16,22 +15,27 @@
   flex-direction: column;
   justify-content: space-between;
 }
+.left .conatctIcon {
+  font-size: 25px;
+  position: relative;
+  top: 5px;
+}
 .left > div:nth-child(3) {
   display: flex;
-  justify-content: flex-end;
+  /* justify-content: flex-end; */
   gap: 20px;
 }
 .left a {
-  color: white;
+  color: black;
 }
 .left a .icon {
   font-size: 30px;
 }
 .left p,
-.left h1 {
+.left h2 {
   text-align: start;
 }
-.left h1 {
+.left h2 {
   margin-bottom: 20px;
 }
 .left p {
@@ -97,4 +101,34 @@ form input:focus,
 form select:focus,
 form textarea:focus {
   outline: none;
+}
+@media screen and (max-width: 800px) {
+  .about {
+    flex-direction: column;
+  }
+  .left {
+    width: 100%;
+    gap: 25px;
+  }
+  .right {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 500px) {
+  .left {
+    padding: 0px;
+    border: none;
+  }
+  .left a .icon {
+    font-size: 25px;
+  }
+  .right {
+    padding: 0px;
+    border: none;
+  }
+  .right form button {
+    padding: 5px 15px;
+    height: 28px;
+    font-size: 15px;
+  }
 }
